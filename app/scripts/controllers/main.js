@@ -46,7 +46,7 @@ angular.module('yoWeatherApp')
     $scope.forecast = weatherService.queryForecastDaily({
       location: $scope.location
     }).$promise.then(function (result){
-    	console.log(result);
+      $scope.forecastInfo = result;
     }, function(reason){
     	console.log(reason);
     });
