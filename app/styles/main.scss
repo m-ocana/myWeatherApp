@@ -51,13 +51,27 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
-  text-align: center;
+  position:relative;
   border-bottom: 1px solid #e5e5e5;
-
+  margin-top: 20px;
+  padding: 30px 30px 40px 30px;
+  text-align: left;
+  i {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 60px;
+    font-size: 10em;}
+  .info {
+      z-index: 100;
+      position: relative;
+  }  
   .btn {
     font-size: 21px;
-    padding: 14px 24px;
-  }
+    padding: 14px 24px;}
 }
 
 /* Supporting marketing content */
@@ -96,8 +110,3 @@ body {
   width: 50%;
 }
 
-.jumbotron {
-  margin-top: 20px;
-  padding: 30px 30px 40px 30px;
-  text-align: left;
-}

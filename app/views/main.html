@@ -61,9 +61,12 @@
       </div>
 
       <div ng-if="forecastInfo" class="jumbotron">
-        <h2>{{forecastInfo.city.name}}</h2>
-        <span>{{forecastInfo.city.country}}</span>
-        <h1>{{forecastInfo.list[0].temp.max | temperature: 'C' : true}}</h1>
+        <div class="info">
+          <h2>{{forecastInfo.city.name}}</h2>
+          <span>{{forecastInfo.city.country}}</span>
+          <h1>{{forecastInfo.list[0].temp.max | temperature: 'C' : true}}</h1>
+        </div>
+        <i ng-class="getWeatherIcon(forecastInfo.list[0].weather[0].id)"></i>
       </div>
 
   <!--/form-->
