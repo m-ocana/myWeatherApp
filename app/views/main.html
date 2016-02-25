@@ -60,9 +60,10 @@
         <button ng-click="setLocation(customPopupSelected)" type="submit" class="btn btn-primary">Find!</button>
       </div>
 
-      <div ng-show="forecastInfo" class="jumbotron">
+      <div ng-if="forecastInfo" class="jumbotron">
         <h2>{{forecastInfo.city.name}}</h2>
         <span>{{forecastInfo.city.country}}</span>
+        <h1>{{forecastInfo.list[0].temp.max | temperature: 'C' : true}}</h1>
       </div>
 
   <!--/form-->
