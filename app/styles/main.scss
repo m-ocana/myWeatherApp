@@ -57,7 +57,6 @@ body {
   padding: 30px 30px 40px 30px;
   text-align: left;
   i {
-    width: 50%;
     height: 100%;
     position: absolute;
     top: 0;
@@ -107,6 +106,67 @@ body {
 }
 
 #search-box {
-  width: 50%;
+  width: 75%;
+}
+
+#daily .list-inline {
+  margin-left: 0px;
+}
+
+#daily li {
+  background-color: #eeeeee;
+  float: left;
+  margin-right: 2.5%;
+  padding: 2%;
+  width: 18%;
+  span {
+    font-size: 0.8em;
+  }
+  i {
+    margin-top: 8px;
+    font-size: 3em;
+    display: block;
+    text-align: center;  
+  }
+  h1 {
+    margin-top: 10px;
+    margin-bottom: 2px;
+    text-align: center;
+    span.temp-min {
+      font-size: 0.7em;
+      font-weight: 200;
+    }
+  }
+}  
+
+#daily li:last-of-type {
+    margin-right: 0px;
+  }
+
+/* Custom menu for city select */
+.typeahead-demo .custom-popup-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  background-color: #f9f9f9;
+}
+
+.typeahead-demo .custom-popup-wrapper > .message {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  color: #868686;
+}
+
+.typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+  position: static;
+  float: none;
+  display: block;
+  min-width: 160px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
