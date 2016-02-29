@@ -8,11 +8,11 @@
  * Controller of the yoWeatherApp
  */
 angular.module('yoWeatherApp')
-  .controller('MainCtrl', ['$scope', '$http','weatherService', function ($scope, $http, weatherService) {
+  .controller('MainCtrl', ['$scope', '$http', '$timeout', 'weatherService', function ($scope, $http, $timeout, weatherService) {
 
-  $scope.onSelect = function ($item, $model, $label, $event) {
+  /*$scope.onSelect = function ($item, $model, $label, $event) {
     $scope.$selection_made = $item;
-  };
+  };*/
 
 	// Find Location info. Supports the autosuggest component
 	$scope.findLocation = function(val) {
@@ -41,7 +41,36 @@ angular.module('yoWeatherApp')
 
     $scope.hasState = 'has-success';
 
-    $scope.weather = weatherService.queryWeather({
+    var loadCurrentWeather = function() {
+      return weatherService.queryWeather({ location: $scope.location })
+        .$promise.then(function(data){
+          $scope.weatherInfo = data;
+        },function(reason){
+          console.log(reason);
+          throw(new Error("Error retrieving current weather"));
+        });
+    },
+    loadForecast = function() {
+      return weatherService.queryForecastDaily({ location: $scope.location })
+        .$promise.then(function(data){
+          $scope.forecastInfo = data;
+        },function(reason){
+          console.log(reason);
+          throw(new Error("Error retrieving forecast"));
+        });
+    };
+
+
+    loadCurrentWeather()
+      .then(
+        $timeout(function(){ loadForecast() }, 200)
+      )
+      .catch();
+
+    $scope.weatherInfo = null;
+    $scope.forecastInfo = null;
+
+    /*$scope.weather = weatherService.queryWeather({
       location: $scope.location
     }).$promise.then(function (result){
       $scope.weatherInfo = result;
@@ -56,6 +85,8 @@ angular.module('yoWeatherApp')
     }, function(reason){
       console.log(reason);
     });
+  */
+
 
   };
 
