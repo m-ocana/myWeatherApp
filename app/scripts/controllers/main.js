@@ -33,44 +33,15 @@ angular.module('yoWeatherApp')
   // Get forecast data for location as given in $scope.location
   $scope.getForecastByLocation = function() {
 
-    if ($scope.location === '' || $scope.location === undefined) {
+    /*if ($scope.location === '' || $scope.location === undefined) {
       $scope.hasState = 'has-warning';
       $scope.message = 'Please provide a location';
       return;
     }
 
-    $scope.hasState = 'has-success';
+    $scope.hasState = 'has-success';*/
 
-    var loadCurrentWeather = function() {
-      return weatherService.queryWeather({ location: $scope.location })
-        .$promise.then(function(data){
-          $scope.weatherInfo = data;
-        },function(reason){
-          console.log(reason);
-          throw(new Error("Error retrieving current weather"));
-        });
-    },
-    loadForecast = function() {
-      return weatherService.queryForecastDaily({ location: $scope.location })
-        .$promise.then(function(data){
-          $scope.forecastInfo = data;
-        },function(reason){
-          console.log(reason);
-          throw(new Error("Error retrieving forecast"));
-        });
-    };
-
-
-    loadCurrentWeather()
-      .then(
-        $timeout(function(){ loadForecast() }, 200)
-      )
-      .catch();
-
-    $scope.weatherInfo = null;
-    $scope.forecastInfo = null;
-
-    /*$scope.weather = weatherService.queryWeather({
+    $scope.weather = weatherService.queryWeather({
       location: $scope.location
     }).$promise.then(function (result){
       $scope.weatherInfo = result;
@@ -85,8 +56,6 @@ angular.module('yoWeatherApp')
     }, function(reason){
       console.log(reason);
     });
-  */
-
 
   };
 
