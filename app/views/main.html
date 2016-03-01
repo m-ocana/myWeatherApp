@@ -25,6 +25,10 @@
     <button ng-click="setLocation(customPopupSelected)" type="submit" class="btn btn-primary">Find!</button>
   </div>
 
+  <div ng-if="hasError" class="alert alert-warning" id="error-msg">
+    <strong>Warning!</strong> {{hasError.message}}
+  </div>
+
   <div ng-if="weatherInfo && forecastInfo" >
     <div class="jumbotron">
       <div class="info">

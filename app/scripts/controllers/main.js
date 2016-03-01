@@ -33,36 +33,54 @@ angular.module('yoWeatherApp')
   // Get forecast data for location as given in $scope.location
   $scope.getForecastByLocation = function() {
 
-    /*if ($scope.location === '' || $scope.location === undefined) {
-      $scope.hasState = 'has-warning';
-      $scope.message = 'Please provide a location';
-      return;
-    }
+    var errorHandler = function(error){
+      $scope.weatherInfo = null;
+      $scope.forecastInfo = null;
 
-    $scope.hasState = 'has-success';*/
+      if(error.code == "404" || error.cod == "404"){
+        $scope.hasError = { message: "The location couldn't be found. Please type another search term and try again" };
+      } else {
+        $scope.hasError = { message: "There is a storm in the servers. Please wait for few seconds before and try again" };
+      }
+      console.log(error);
+    },
+    // Request #1
+    loadCurrentWeather = function(){
+      return weatherService.queryWeather({
+                location: $scope.location
+              });
+    },
+    // Request #2
+    loadForecast = function(){
+      return weatherService.queryForecastDaily({
+                location: $scope.location
+              }).$promise.then(function(data){
+                  $scope.forecastInfo = data;
+                },errorHandler);
+    };
 
-    $scope.weather = weatherService.queryWeather({
-      location: $scope.location
-    }).$promise.then(function (result){
-      $scope.weatherInfo = result;
-    }, function(reason){
-      console.log(reason);
-    });
+    $scope.hasError = null;
 
-    $scope.forecast = weatherService.queryForecastDaily({
-      location: $scope.location
-    }).$promise.then(function (result){
-      $scope.forecastInfo = result;
-    }, function(reason){
-      console.log(reason);
-    });
-
+    loadCurrentWeather()
+      .$promise.then(function(data){
+        // Possible bug found. Get 200 response with 400 code. Extra validation added 
+        if(data.cod == "200"){
+          $scope.weatherInfo = data;
+          $timeout(loadForecast,50);
+        } else {
+          errorHandler(data);
+        }
+      }, errorHandler);
   };
 
-  // Set $scope.location and execute search on API
+  // Set $scope.location and get weather data
   $scope.setLocation = function(loc) {
-    $scope.location = loc;
-    $scope.getForecastByLocation();
+    // Avoids sending requests if location has not changed
+    if(loc!="" && loc!=$scope.location){
+      $scope.location = loc;
+      $scope.getForecastByLocation();
+    }
+
   };
 
   }]);
