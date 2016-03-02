@@ -19,7 +19,7 @@ angular.module('yoWeatherApp')
 //   (subject to be made configurable through service initialization so that server mode using
 //    "normal" json api is supported as well)
 //
-  .factory('weatherService', function($resource) {
+  .factory('weatherService', function ($resource) {
 
     // API key is currently unused (work either with or without key)
     var apiKey = '3a8e9dd1b81a4b5d35a2bc0566023ed7';
@@ -31,7 +31,8 @@ angular.module('yoWeatherApp')
         mode: 'json',
         callback: 'JSON_CALLBACK',
         units: 'metric',
-        lang: 'en'
+        lang: 'en',
+        type: 'accurate'
       },
       {
         queryWeather: {

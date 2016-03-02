@@ -4,7 +4,6 @@
      style="display: block;"
      ng-show="isOpen() && !moveInProgress"
      aria-hidden="{{!isOpen()}}">
-    <p class="message">select location from drop down.</p>
 
     <ul class="dropdown-menu" role="listbox">
         <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
@@ -18,13 +17,14 @@
 <div class="container-fluid typeahead-demo">
   <h4>Find the weather forecast in...</h4>
 
-  <div class="form-inline">
+  <div class="form-group form-inline">
+    <!--div class="form-group"-->
     <!-- Asynchronous results with custom popup template -->
-    <input type="text" ng-model="customPopupSelected" placeholder="Enter a postcode, town or country" uib-typeahead="address for address in findLocation($viewValue)" typeahead-popup-template-url="customPopupTemplate.html" id="search-box" class="form-control" > 
+    <input type="text" ng-model="customPopupSelected" placeholder="Enter a postcode, town or country" uib-typeahead="address for address in findLocations($viewValue)" typeahead-popup-template-url="customPopupTemplate.html" typeahead-focus-first="false" ng-enter="setLocation(customPopupSelected)" id="search-box" class="form-control" > 
 
     <button ng-click="setLocation(customPopupSelected)" type="submit" class="btn btn-primary">Find!</button>
+  <!--/div-->
   </div>
-
   <div ng-if="hasError" class="alert alert-warning" id="error-msg">
     <strong>Warning!</strong> {{hasError.message}}
   </div>
@@ -32,8 +32,8 @@
   <div ng-if="weatherInfo && forecastInfo" >
     <div class="jumbotron">
       <div class="info">
-        <h2>{{forecastInfo.city.name}}</h2>
-        <span>{{forecastInfo.city.country}}</span>
+        <h2>{{weatherInfo.name}}</h2>
+        <span>{{weatherInfo.sys.country}}</span>
         <h1>{{weatherInfo.main.temp | temperature: 'C' : true}}</h1>
       </div>
       <i ng-class="'wi wi-owm-' + weatherInfo.weather[0].id"></i>

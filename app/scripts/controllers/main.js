@@ -8,32 +8,16 @@
  * Controller of the yoWeatherApp
  */
 angular.module('yoWeatherApp')
-  .controller('MainCtrl', ['$scope', '$http', '$timeout', 'weatherService', function ($scope, $http, $timeout, weatherService) {
+  .controller('MainCtrl', ['$scope', '$http', '$timeout', 'geoLocationService', 'weatherService', function ($scope, $http, $timeout, geoLocationService, weatherService) {
 
-  /*$scope.onSelect = function ($item, $model, $label, $event) {
-    $scope.$selection_made = $item;
-  };*/
-
-	// Find Location info. Supports the autosuggest component
-	$scope.findLocation = function(val) {
-  	return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
-  	  params: {
-  	    address: val,
-        language: 'en',
-  	    sensor: false
-  	  }
-  	}).then(function(response){
-  	  return response.data.results.map(function(item){
-  	    return item.formatted_address;
-  	  });
-  	});
-	};
-
+  $scope.findLocations = function (val) {
+    return geoLocationService.findCitiesByName(val);
+  };
 
   // Get forecast data for location as given in $scope.location
   $scope.getForecastByLocation = function() {
 
-    var errorHandler = function(error){
+    var errorHandler = function (error) {
       $scope.weatherInfo = null;
       $scope.forecastInfo = null;
 
@@ -45,13 +29,13 @@ angular.module('yoWeatherApp')
       console.log(error);
     },
     // Request #1
-    loadCurrentWeather = function(){
+    loadCurrentWeather = function () {
       return weatherService.queryWeather({
                 location: $scope.location
               });
     },
     // Request #2
-    loadForecast = function(){
+    loadForecast = function () {
       return weatherService.queryForecastDaily({
                 location: $scope.location
               }).$promise.then(function(data){
@@ -74,13 +58,12 @@ angular.module('yoWeatherApp')
   };
 
   // Set $scope.location and get weather data
-  $scope.setLocation = function(loc) {
+  $scope.setLocation = function (loc) {
     // Avoids sending requests if location has not changed
-    if(loc!="" && loc!=$scope.location){
+    if((loc!="" && loc!=$scope.location) || $scope.hasError){
       $scope.location = loc;
       $scope.getForecastByLocation();
     }
-
   };
 
   }]);
