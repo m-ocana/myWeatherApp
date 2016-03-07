@@ -14,7 +14,7 @@
   </div>
 </script>
 
-<div class="container-fluid typeahead-demo">
+<div class="container-fluid typeahead-demo" ng-init="getCurrentPosition()">
   <h4>Find the weather forecast in...</h4>
 
   <div class="form-group form-inline">
@@ -27,6 +27,10 @@
   </div>
   <div ng-if="hasError" class="alert alert-warning" id="error-msg">
     <strong>Warning!</strong> {{hasError.message}}
+  </div>
+
+  <div>
+    <div ng-if="!hasError && (!weatherInfo || !forecastInfo)" class="sp sp-circle"></div>
   </div>
 
   <div ng-if="weatherInfo && forecastInfo" >

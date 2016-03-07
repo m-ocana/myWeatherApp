@@ -24,6 +24,15 @@ angular.module('yoWeatherApp')
 	  	    return item.formatted_address;
 	  	  });
 	  	});    	
-    }
+    },
+
+    this.getCurrentCoords = function (callback) {
+
+	    if (navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(callback);
+		} else {
+			console.log("Geolocation not supported by this browser")
+		}
+    };
 
   });

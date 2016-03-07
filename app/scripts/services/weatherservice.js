@@ -25,7 +25,7 @@ angular.module('yoWeatherApp')
     var apiKey = '3a8e9dd1b81a4b5d35a2bc0566023ed7';
     var apiBaseUrl = 'http://api.openweathermap.org/data/2.5/';
 
-    return $resource(apiBaseUrl + ':path/:subPath?q=:location',
+    return $resource(apiBaseUrl + ':path/:subPath?:location:coords',
       {
         APPID: apiKey,
         mode: 'json',
@@ -38,7 +38,7 @@ angular.module('yoWeatherApp')
         queryWeather: {
           method: 'JSONP',
           params: {
-            path: 'weather'
+            path: 'weather',
           },
           isArray: false,
           headers: {
@@ -48,7 +48,7 @@ angular.module('yoWeatherApp')
         queryForecast: {
           method: 'JSONP',
           params: {
-            path: 'forecast'
+            path: 'forecast',
           },
           isArray: false,
           headers: {
