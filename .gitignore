@@ -3,3 +3,12 @@
 /.tmp
 /.sass-cache
 /bower_components
+.DS_Store
+.bowercc
+.editorconfig
+.gitattributes
+.jscsrc
+.jshintrc
+.travis.yml
+.yo-rc.json
+contributors.txt
