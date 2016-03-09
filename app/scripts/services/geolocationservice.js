@@ -31,7 +31,7 @@ angular.module('yoWeatherApp')
 	    if (navigator.geolocation) {
 		    navigator.geolocation.getCurrentPosition(callback);
 		} else {
-			console.log("Geolocation not supported by this browser")
+			//console.log("Geolocation not supported by this browser");
 		}
     };
 

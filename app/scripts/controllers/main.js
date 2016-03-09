@@ -43,13 +43,16 @@ angular.module('yoWeatherApp')
           }
           console.log(error);
         },
+
         // Request #1
         loadCurrentWeather = function (params) {
           return weatherService.queryWeather(params);
         },
+        
         // Request #2
         loadForecast = function (params) {
-          return weatherService.queryForecastDaily(params).$promise.then(function(data){
+          return weatherService.queryForecastDaily(params)
+                    .$promise.then(function(data){
                       $scope.forecastInfo = data;
                     },errorHandler);
         };

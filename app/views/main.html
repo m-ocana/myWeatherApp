@@ -36,6 +36,7 @@
   <div ng-if="weatherInfo && forecastInfo" >
     <div class="jumbotron">
       <div class="info">
+        <span>Today {{weatherInfo.dt * 1000 | date:'EEE dd'}}</span>
         <h2>{{weatherInfo.name}}</h2>
         <span>{{weatherInfo.sys.country}}</span>
         <h1>{{weatherInfo.main.temp | temperature: 'C' : true}}</h1>
