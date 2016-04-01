@@ -12,6 +12,7 @@ angular.module('yoWeatherApp')
     function ($scope, $http, $timeout, geoLocationService, weatherService) {
 
       $scope.getCurrentPosition = function () {
+        
         var callback = function(position){
           var coords = {lat: position.coords.latitude, lon: position.coords.longitude};
           localStorage.setItem("geoCoords", JSON.stringify(coords));
@@ -48,7 +49,7 @@ angular.module('yoWeatherApp')
         loadCurrentWeather = function (params) {
           return weatherService.queryWeather(params);
         },
-        
+
         // Request #2
         loadForecast = function (params) {
           return weatherService.queryForecastDaily(params)

@@ -22,6 +22,8 @@
     <!-- Asynchronous results with custom popup template -->
     <input type="text" ng-model="customPopupSelected" placeholder="Enter a postcode, town or country" uib-typeahead="address for address in findLocations($viewValue)" typeahead-popup-template-url="customPopupTemplate.html" typeahead-focus-first="false" ng-enter="setLocation(customPopupSelected)" id="search-box" class="form-control" > 
 
+    <!--button ng-click="getCurrentPosition(true)" id="tracker" class="btn btn-primary" uib-tooltip="Track my location" ><span class="glyphicon glyphicon-map-marker"></span></button-->
+
     <button ng-click="setLocation(customPopupSelected)" type="submit" class="btn btn-primary">Find!</button>
   <!--/div-->
   </div>
