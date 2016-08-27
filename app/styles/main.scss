@@ -13,10 +13,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 body {
   padding: 0;
+  background-color: #fff;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
 .marketing,
 .footer {
   padding-left: 15px;
@@ -26,8 +26,14 @@ body {
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
+  margin-bottom: 30px;
+  .navbar {
+    margin-bottom: 0px;
+    border: none;
+  }
+  .navbar-default {
+    background-color: #000;
+  }
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
@@ -37,13 +43,11 @@ body {
   }
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  margin-top: 40px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+#search-box {
+  display: inline-block;
+  width: 75%;
 }
+
 
 .container-narrow > hr {
   margin: 30px 0;
@@ -53,6 +57,7 @@ body {
 .jumbotron {
   position:relative;
   border-bottom: 1px solid #e5e5e5;
+  background-color: rgba(0,0,0,.1);
   margin-top: 20px;
   padding: 30px 30px 40px 30px;
   text-align: left;
@@ -67,46 +72,10 @@ body {
   .info {
       z-index: 100;
       position: relative;
-  }  
+  }
   .btn {
     font-size: 21px;
     padding: 14px 24px;}
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
-
-#search-box {
-  width: 80%;
 }
 
 #daily .list-inline {
@@ -114,7 +83,7 @@ body {
 }
 
 #daily li {
-  background-color: #eeeeee;
+  background-color: rgba(0,0,0,.1);
   float: left;
   border-radius: 6px;
   margin-right: 2.5%;
@@ -127,7 +96,7 @@ body {
     margin-top: 8px;
     font-size: 3em;
     display: block;
-    text-align: center;  
+    text-align: center;
   }
   h1 {
     margin-top: 10px;
@@ -138,7 +107,7 @@ body {
       font-weight: 200;
     }
   }
-}  
+}
 
 #daily li:last-of-type {
     margin-right: 0px;
@@ -195,6 +164,43 @@ body {
 .sp-circle.ng-animate {
   -webkit-animation: none 0s;
 }
+
+.wi {
+    color: #fff;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  margin-top: 40px;
+  color: #777;
+  border-top: 1px solid #777;
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
 
 @-webkit-keyframes spCircRot {
   from {

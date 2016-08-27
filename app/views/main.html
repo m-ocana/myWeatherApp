@@ -14,7 +14,9 @@
   </div>
 </script>
 
-<div class="container-fluid typeahead-demo" ng-init="getCurrentPosition()">
+<!-- getCurrentPosition commented due to issue with geolocation in http -->
+<!--div class="container-fluid typeahead-demo" ng-init="getCurrentPosition()"-->
+<div class="container-fluid typeahead-demo">
   <h4>Find the weather forecast in...</h4>
 
   <div class="form-group form-inline">
@@ -31,9 +33,10 @@
     <strong>Warning!</strong> {{hasError.message}}
   </div>
 
-  <div>
+  <!-- Loading div commented due to issue with geolocation in http -->
+  <!--div>
     <div ng-if="!hasError && (!weatherInfo || !forecastInfo)" class="sp sp-circle"></div>
-  </div>
+  </div-->
 
   <div ng-if="weatherInfo && forecastInfo" >
     <div class="jumbotron">
