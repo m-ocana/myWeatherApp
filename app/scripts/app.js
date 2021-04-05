@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @ngdoc overview
@@ -9,25 +9,33 @@
  * Main module of the application.
  */
 angular
-  .module('yoWeatherApp', [
-    'ngAnimate',
-    'ngAria',
-    'ngCookies',
-    'ngMessages',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'ui.bootstrap'
+  .module("yoWeatherApp", [
+    "ngAnimate",
+    "ngAria",
+    "ngCookies",
+    "ngMessages",
+    "ngResource",
+    "ngRoute",
+    "ngSanitize",
+    "ngTouch",
+    "ui.bootstrap",
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+      .when("/", {
+        templateUrl: "views/main.html",
+        controller: "MainCtrl",
+        controllerAs: "main",
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: "/",
       });
+  })
+  .config(function ($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Allow same origin resource loads.
+      "self",
+      // Allow loading from our assets domain. **.
+      "http://api.openweathermap.org/**",
+    ]);
   });
