@@ -37,5 +37,6 @@ angular
       "self",
       // Allow loading from our assets domain. **.
       "http://api.openweathermap.org/**",
+      "https://api.openweathermap.org/**",
     ]);
   });

@@ -23,7 +23,7 @@ angular
   .factory("weatherService", function ($resource) {
     // API key is currently unused (work either with or without key)
     var apiKey = "3a8e9dd1b81a4b5d35a2bc0566023ed7";
-    var apiBaseUrl = "http://api.openweathermap.org/data/2.5/";
+    var apiBaseUrl = "//api.openweathermap.org/data/2.5/";
 
     return $resource(
       apiBaseUrl + ":path/:subPath?:location:coords",

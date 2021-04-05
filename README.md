@@ -3,15 +3,13 @@
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.15.1.
 
-Live demo [here](http://manuelocana.me/lab/weatherApp/).
-
+Live demo [here](https://m-ocana.github.io/myWeatherApp).
 
 ## Installation
 
 Clone the repository `git clone https://github.com/m-ocana/myWeatherApp.git`
 
-Install dependencies with `npm install` & `bower install`
-
+Install dependencies with `npm install` & `npm run bower install`
 
 ## Build & development
 
