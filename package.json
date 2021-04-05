@@ -39,6 +39,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "bower": "bower",
     "test": "grunt test"
   },
   "dependencies": {}
